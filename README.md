@@ -1,27 +1,86 @@
-# Projectmanagerdashboard
+# YouTube API Integration Frontend Documentation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
+This Angular frontend application integrates with a Spring Boot backend to interact with YouTube's API. Below are the implemented endpoints with usage examples and expected responses.
 
-## Development server
+## API Endpoints Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1. Add Comment to Video
+**Endpoint**  
+`POST /api/youtube/comment`
 
-## Code scaffolding
+**Request Example**
+{
+"videoId": "ABC123xyz",
+"comment": "Great tutorial content!"
+}
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+text
 
-## Build
+**Success Response**
+{
+"message": "Comment added successfully",
+"commentId": "UgzX6789PQRS1TUVWXYZ"
+}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+text
 
-## Running unit tests
+**Error Responses**
+// Missing videoId
+{
+"error": "Error: videoId is required."
+}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+// Empty comment
+{
+"error": "Error: comment text cannot be empty."
+}
 
-## Running end-to-end tests
+text
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 2. Update Video Title
+**Endpoint**  
+`PUT /api/youtube/update-title`
 
-## Further help
+**Request Example**
+{
+"videoId": "XYZ456abc",
+"title": "Updated Video Title - 2025 Edition"
+}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+text
+
+**Success Response**  
+`Video title updated successfully: Updated Video Title - 2025 Edition`
+
+**Error Responses**  
+- `404 Video not found with ID: [videoId]`
+- `400 Failed to update video title: [error details]`
+
+### 3. Delete Comment
+**Endpoint**  
+`DELETE /api/youtube/comment/{commentId}`
+
+**Success Response**  
+`Comment deleted successfully: UgzX6789PQRS1TUVWXYZ`
+
+**Error Response**  
+`400 Failed to delete comment: [error details]`
+
+### 4. Get Video Details
+**Endpoint**  
+`GET /api/youtube/details/{videoId}`
+
+**Success Response**
+{
+"id": "XYZ456abc",
+"snippet": {
+"title": "Spring Boot OpenAPI Tutorial",
+"description": "Comprehensive guide to API documentation...",
+"categoryId": "27",
+"tags": ["spring", "openapi"]
+},
+"statistics": {
+"viewCount": "15000",
+"likeCount": "850"
+}
+}
