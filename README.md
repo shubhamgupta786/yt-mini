@@ -19,7 +19,7 @@ text
 **Success Response**
 {
 "message": "Comment added successfully",
-"commentId": "UgzX6789PQRS1TUVWXYZ"
+"commentId": "Ugz....."
 }
 
 text
@@ -43,7 +43,7 @@ text
 
 **Request Example**
 {
-"videoId": "XYZ456abc",
+"videoId": "X6abc",
 "title": "Updated Video Title - 2025 Edition"
 }
 
@@ -61,7 +61,7 @@ text
 `DELETE /api/youtube/comment/{commentId}`
 
 **Success Response**  
-`Comment deleted successfully: UgzX6789PQRS1TUVWXYZ`
+`Comment deleted successfully: Ug....`
 
 **Error Response**  
 `400 Failed to delete comment: [error details]`
